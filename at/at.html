@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128007478-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128007478-4');
+    </script>    
+
+	<!-- moment.js: https://stackoverflow.com/a/50208295 -->
+	<script src="http://www.longtrailsweather.net/common/moment.min.js"></script>
+	<script src="http://www.longtrailsweather.net/common/moment-timezone-with-data.min.js"></script>
+	
+    <link rel="icon" type="image/png" href="http://www.longtrailsweather.net/favicon.png">
+    
+    <title>at weather</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      table,
+      td {
+          border: 1px solid #333;
+      }
+      th {
+          border: 1px solid #333;
+      },
+      tfoot {
+          background-color: #333;
+          color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    LTWx: Appalachian Trail Weather.<br>
+    <br>
+    Forecasts updated as of: <span id="updated">loading...</span><br>
+    <br>
+    Format: <span id="formatString">Daily high in °F / daily low in °F / precip. type, probability, amount in inches / summary.</span><br>
+    <br>
+    More trails at <a href="http://www.longtrailsweather.net">www.longtrailsweather.net</a>. <a target="_blank" rel="noopener noreferrer" href="mailto:longtrailsweather@gmail.com">feedback</a>.<br>
+    <br>
+    Weather data <a target="_blank" rel="noopener noreferrer" href="https://darksky.net/poweredby/">powered by DarkSky.net</a>.<br>
+    <br>
+    <fieldset>
+        <div>
+            <input type="radio" id="imperial" name="measurementSystem" value="imperial" checked />
+            <label for="imperial">Freedom Units</label>
+        </div>
+        <div>
+            <input type="radio" id="metric" name="measurementSystem" value="metric" />
+            <label for="metric">Metric</label>
+        </div>
+    </fieldset>
+	<br>
+	<br>
+    <table id="tbl"></table>
+  </body>
+
+  <script type="module">
+    import * as ltw from 'http://www.longtrailsweather.net/common/ltw.js';
+
+	ltw.start('at', 'nobo');	
+  </script>
+</html>
